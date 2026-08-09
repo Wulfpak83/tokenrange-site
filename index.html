@@ -232,28 +232,33 @@
   .r-cursor .fill { background: var(--cursor); } .r-cursor .p { color: var(--cursor); }
 
   /* ---- spool card: provider rows count up, then flick through skins ---- */
+  /* The skin card wears a COMPLETE skin: surface, ink, dividers, accent.
+     Two of the sixteen (pressroom, canvas) are light, so the card itself
+     flips to cream mid-cycle. Tokens come straight from Skin.swift. */
   .spool {
-    background: var(--bg); border-radius: 20px; padding: 26px 24px;
+    --sk-bg: #0E0E0F; --sk-ink: #EDEBE6; --sk-dim: #8A8A86; --sk: #D97757;
+    --sk-off: color-mix(in srgb, var(--sk-ink) 13%, transparent);
+    background: var(--sk-bg); border-radius: 20px; padding: 26px 24px;
     margin-top: 34px; max-width: 560px;
     box-shadow: 0 22px 60px rgba(24, 20, 12, 0.28);
   }
   .spool .head {
     display: flex; align-items: center; gap: 10px;
-    padding-bottom: 16px; border-bottom: 1px solid var(--off);
+    padding-bottom: 16px; border-bottom: 1px solid var(--sk-off);
   }
   .spool .head .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--sk); }
-  .spool .head .name { color: var(--ink); font-size: 1rem; }
+  .spool .head .name { color: var(--sk-ink); font-size: 1rem; }
   .spool .head .plan {
     font-size: 0.66rem; padding: 3px 7px; border-radius: 6px;
-    color: var(--sk); background: color-mix(in srgb, var(--sk) 14%, transparent);
+    color: var(--sk); background: color-mix(in srgb, var(--sk) 16%, transparent);
   }
-  .spool .head .skin-name { margin-left: auto; color: var(--faint); font-size: 0.72rem; }
+  .spool .head .skin-name { margin-left: auto; color: var(--sk-dim); font-size: 0.72rem; }
   .srow { padding: 14px 0; }
-  .srow + .srow { border-top: 1px solid var(--off); }
+  .srow + .srow { border-top: 1px solid var(--sk-off); }
   .srow .top { display: flex; justify-content: space-between; align-items: baseline; }
-  .srow .lbl { color: var(--dim); font-size: 0.84rem; }
+  .srow .lbl { color: var(--sk-dim); font-size: 0.84rem; }
   .srow .val { color: var(--sk); font-size: 1.05rem; font-variant-numeric: tabular-nums; }
-  .srow .track { margin-top: 8px; height: 4px; background: var(--off); overflow: hidden; }
+  .srow .track { margin-top: 8px; height: 4px; background: var(--sk-off); overflow: hidden; }
   .srow .fill {
     height: 100%; width: 100%; background: var(--sk);
     transform: scaleX(var(--w)); transform-origin: left;
@@ -484,9 +489,10 @@
         <div>
           <p class="kicker rv"><span class="path">~/tokenrange</span> <span class="chev">❯</span> theme</p>
           <h2 class="rv">every skin, one tap.</h2>
-          <p class="lede rv late">Sixteen terminal colorschemes. Watch one
-          provider card wear them all, then settle back on statusline. Every
-          single one passes WCAG AA contrast.</p>
+          <p class="lede rv late">Sixteen terminal colorschemes, and the whole
+          surface changes with them, light ones included. Watch one provider
+          card wear every skin, then settle back on statusline. Each one
+          passes WCAG AA contrast.</p>
 
           <div class="spool" id="spool" style="--sk: #D97757;">
             <div class="head">
@@ -662,18 +668,32 @@
     if (!card) return;
     var vals = Array.prototype.slice.call(card.querySelectorAll("[data-count]"));
     var skinName = document.getElementById("skinName");
-    // Real Skin.swift values: [name, provider/accent color].
+    // Verbatim Skin.swift token sets: [name, bg, ink, dim, provider accent].
     var SKINS = [
-      ["statusline", "#D97757"], ["redline", "#F0342A"], ["slate", "#E8897B"],
-      ["ember", "#D97757"], ["graphite", "#10A37F"], ["circuit", "#4D9FFF"],
-      ["aurora", "#6E8BFF"], ["monolith", "#FFFFFF"], ["ghostty", "#89B4FA"],
-      ["cmux", "#E0B25E"], ["dracula", "#BD93F9"], ["nord", "#88C0D0"],
-      ["tokyo-night", "#7AA2F7"], ["pressroom", "#C72115"], ["canvas", "#A05022"]
+      ["statusline", "#0E0E0F", "#EDEBE6", "#8A8A86", "#D97757"],
+      ["redline", "#0C0C0D", "#F2EFEB", "#938B88", "#E8897B"],
+      ["slate", "#16171A", "#ECECF1", "#989CAA", "#E8897B"],
+      ["ember", "#1A1310", "#F2E7DF", "#A68A7C", "#D97757"],
+      ["graphite", "#0D0D0D", "#ECECEC", "#909090", "#10A37F"],
+      ["circuit", "#0B0E14", "#E6EDF7", "#8491A5", "#4D9FFF"],
+      ["aurora", "#0E1020", "#ECEEFF", "#9095B8", "#6E8BFF"],
+      ["monolith", "#0A0A0A", "#FFFFFF", "#A6A6A6", "#FFFFFF"],
+      ["ghostty", "#1D2021", "#EBDBB2", "#A89984", "#89B4FA"],
+      ["cmux", "#141416", "#EEECE8", "#98958E", "#E0B25E"],
+      ["dracula", "#282A36", "#F8F8F2", "#A7A8B5", "#BD93F9"],
+      ["nord", "#2E3440", "#ECEFF4", "#A5ADBD", "#88C0D0"],
+      ["tokyo-night", "#1A1B26", "#C0CAF5", "#7F849C", "#7AA2F7"],
+      ["pressroom", "#F6F4EC", "#141312", "#6F6A62", "#C72115"],
+      ["canvas", "#ECE4D1", "#1C1A16", "#6A6457", "#A05022"]
     ];
 
     function setSkin(i) {
-      card.style.setProperty("--sk", SKINS[i][1]);
-      skinName.textContent = SKINS[i][0];
+      var sk = SKINS[i];
+      card.style.setProperty("--sk-bg", sk[1]);
+      card.style.setProperty("--sk-ink", sk[2]);
+      card.style.setProperty("--sk-dim", sk[3]);
+      card.style.setProperty("--sk", sk[4]);
+      skinName.textContent = sk[0];
     }
 
     function countUp() {
@@ -703,7 +723,7 @@
         i += 1;
         // Fast click-through that decelerates into the final skin.
         var remaining = order.length - i;
-        var delay = remaining < 6 ? 70 + (6 - remaining) * 55 : 70;
+        var delay = remaining < 6 ? 95 + (6 - remaining) * 65 : 95;
         setTimeout(step, delay);
       })();
     }
