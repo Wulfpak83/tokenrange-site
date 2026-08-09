@@ -734,7 +734,7 @@
       })(start);
     }
 
-    function cycleSkins() {
+    function cycleSkins(done) {
       var i = 0;
       var order = [];
       // One pass. 170ms per skin is about the floor for the eye to actually
@@ -742,7 +742,8 @@
       for (var k = 1; k < SKINS.length; k += 1) order.push(k);
       order.push(0);
       (function step() {
-        if (i >= order.length) { setSkin(0); return; }
+        if (!visible) { setSkin(0); if (done) done(); return; }
+        if (i >= order.length) { setSkin(0); if (done) done(); return; }
         setSkin(order[i]);
         i += 1;
         // Fast click-through that decelerates into the final skin.
@@ -752,11 +753,27 @@
       })();
     }
 
-    var spun = false;
+    // Fires when the section actually reaches the viewport, then keeps
+    // cycling every 3s for as long as the card stays on screen. Scroll away
+    // and it stops; scroll back and it picks up again. No refresh needed.
+    var visible = false;
+    var counted = false;
+    var running = false;
+    var REPEAT_MS = 3000;
+
+    function runCycle() {
+      if (!visible || running) return;
+      running = true;
+      cycleSkins(function () {
+        running = false;
+        setTimeout(function () { runCycle(); }, REPEAT_MS);
+      });
+    }
+
     var spoolIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (!e.isIntersecting || spun) return;
-        spun = true;
+        visible = e.isIntersecting;
+        if (!visible) return;
         card.classList.add("in-view");
         if (reduced) {
           vals.forEach(function (el) {
@@ -764,10 +781,15 @@
           });
           return;
         }
-        countUp();
-        setTimeout(cycleSkins, 1500);
+        if (!counted) {
+          counted = true;
+          countUp();
+          setTimeout(runCycle, 1400);
+        } else {
+          runCycle();
+        }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.35 });
     spoolIO.observe(card);
   })();
 
@@ -775,9 +797,14 @@
   (function () {
     var field = document.querySelector(".widget-field");
     if (!field) return;
+    // Re-arms on exit so the burst replays every time you scroll back to it.
     var fieldIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("in-view"); fieldIO.unobserve(e.target); }
+        if (e.isIntersecting) {
+          e.target.classList.add("in-view");
+        } else {
+          e.target.classList.remove("in-view");
+        }
       });
     }, { threshold: 0.25 });
     fieldIO.observe(field);
