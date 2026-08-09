@@ -205,9 +205,23 @@
     gap: clamp(32px, 6vw, 80px); align-items: center;
   }
   .split .shot { display: flex; justify-content: center; }
+  /* Owner ruling: break the flat plane. The theme phone pivots so its
+     bottom-right corner comes toward the viewer (~30deg of combined tilt). */
+  .split .shot { perspective: 1400px; perspective-origin: 60% 50%; }
   .split .shot .phone {
-    background: var(--ink-on-amber); transform: none;
-    box-shadow: 0 30px 80px rgba(24, 20, 12, 0.38);
+    background: var(--ink-on-amber);
+    transform: rotateY(-22deg) rotateX(9deg) rotateZ(1.5deg);
+    transform-style: preserve-3d;
+    box-shadow: -18px 34px 90px rgba(24, 20, 12, 0.42);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    /* It arrives flatter, then settles into the pivot. */
+    .split .shot.in-view .phone { animation: pivot-in 1.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    @keyframes pivot-in {
+      from { transform: rotateY(-4deg) rotateX(2deg) translateY(34px); opacity: 0; }
+      to { transform: rotateY(-22deg) rotateX(9deg) rotateZ(1.5deg) translateY(0); opacity: 1; }
+    }
   }
 
   .meter-demo {
@@ -269,10 +283,17 @@
 
   /* ---- floating widget cards ---- */
   .widget-field {
-    position: relative; margin-top: 40px;
+    position: relative; margin-top: 44px;
     display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 18px; max-width: 620px;
+    gap: 18px; max-width: 640px;
   }
+  /* Each slot carries the resting offset + the idle hover; the card inside
+     carries the burst. Two layers so the two motions never fight. */
+  .wslot { position: relative; }
+  .wslot.f1 { --tx: -8px; --ty: 10px; --rot: -2.5deg; z-index: 2; }
+  .wslot.f2 { --tx: 12px; --ty: -10px; --rot: 2deg; z-index: 3; }
+  .wslot.f3 { --tx: 0px; --ty: -6px; --rot: -1deg; z-index: 1; }
+  .wslot { translate: var(--tx) var(--ty); rotate: var(--rot); }
   .wcard {
     background: var(--bg); border-radius: 20px; padding: 16px 16px 18px;
     box-shadow: 0 18px 46px rgba(24, 20, 12, 0.26);
@@ -289,7 +310,8 @@
   .wline .wl span:last-child { font-variant-numeric: tabular-nums; }
   .wline .wt { margin-top: 5px; height: 3px; background: var(--off); overflow: hidden; }
   .wline .wf { height: 100%; width: 100%; transform: scaleX(var(--w)); transform-origin: left; }
-  .wcard.lock { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; }
+  .wslot.f3 { grid-column: 1 / -1; }
+  .wcard.lock { display: flex; align-items: center; gap: 14px; }
   .wcard.lock .ring {
     width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
     background: conic-gradient(var(--claude) 0 58%, var(--off) 58% 100%);
@@ -381,27 +403,29 @@
     }
 
     /* phones: rise with a slight counter-rotation settle */
-    .shot.in-view { animation: rise-shot 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
-    @keyframes rise-shot {
-      from { opacity: 0; transform: translateY(36px) rotate(2.5deg); }
-      to { opacity: 1; transform: translateY(0) rotate(0deg); }
-    }
+    /* (the split phone runs its own pivot-in; see the 3D block) */
 
-    /* widgets: each card flies in from a different edge, then floats */
-    .widget-field.in-view .wcard.f1 {
-      animation: fly-l 0.7s cubic-bezier(0.16,1,0.3,1) both, bobA 6.5s ease-in-out 0.9s infinite;
+    /* widgets: burst out overlapping, overshoot, settle, then hover */
+    .widget-field.in-view .wslot.f1 .wcard { animation: pop 0.78s cubic-bezier(0.34, 1.4, 0.5, 1) both; }
+    .widget-field.in-view .wslot.f2 .wcard { animation: pop 0.78s cubic-bezier(0.34, 1.4, 0.5, 1) 0.08s both; }
+    .widget-field.in-view .wslot.f3 .wcard { animation: pop 0.78s cubic-bezier(0.34, 1.4, 0.5, 1) 0.16s both; }
+    @keyframes pop {
+      0% { opacity: 0; scale: 0.34; translate: 0 90px; }
+      58% { opacity: 1; scale: 1.07; translate: 0 -12px; }
+      100% { opacity: 1; scale: 1; translate: 0 0; }
     }
-    .widget-field.in-view .wcard.f2 {
-      animation: fly-r 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s both, bobB 7.8s ease-in-out 1.1s infinite;
+    /* the idle hover starts only after the burst lands */
+    .widget-field.in-view .wslot.f1 { animation: hoverA 6.6s ease-in-out 1.1s infinite; }
+    .widget-field.in-view .wslot.f2 { animation: hoverB 7.9s ease-in-out 1.3s infinite; }
+    .widget-field.in-view .wslot.f3 { animation: hoverA 7.3s ease-in-out 1.5s infinite; }
+    @keyframes hoverA {
+      0%, 100% { translate: var(--tx) var(--ty); }
+      50% { translate: var(--tx) calc(var(--ty) - 8px); }
     }
-    .widget-field.in-view .wcard.f3 {
-      animation: fly-u 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s both, bobA 7.2s ease-in-out 1.3s infinite;
+    @keyframes hoverB {
+      0%, 100% { translate: var(--tx) var(--ty); }
+      50% { translate: var(--tx) calc(var(--ty) - 12px); }
     }
-    @keyframes fly-l { from { opacity: 0; transform: translate(-40px, 12px) rotate(-3deg); } }
-    @keyframes fly-r { from { opacity: 0; transform: translate(40px, 12px) rotate(3deg); } }
-    @keyframes fly-u { from { opacity: 0; transform: translateY(30px) scale(0.96); } }
-    @keyframes bobA { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
-    @keyframes bobB { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
 
     /* FAQ card: unfolds from its top edge */
     .faq-list.in-view { animation: unfold 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; transform-origin: top center; }
@@ -409,7 +433,8 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .typed .caret, .hero-shot .phone, .token-glitch .ghost { animation: none; }
-    .widget-field.in-view .wcard { animation: none; }
+    .widget-field.in-view .wcard, .widget-field.in-view .wslot { animation: none; }
+    .split .shot .phone { animation: none; }
     html { scroll-behavior: auto; }
   }
 
@@ -531,7 +556,7 @@
       Screen complication, all reading the same numbers as the dashboard.</p>
 
       <div class="widget-field" aria-label="Widget examples: small, medium, and Lock Screen">
-        <div class="wcard f1">
+        <div class="wslot f1"><div class="wcard">
           <div class="wtop"><b>claude</b><span>upd 2m</span></div>
           <div class="wline">
             <div class="wl"><span>/session</span><span style="color: var(--claude);">58%</span></div>
@@ -541,9 +566,9 @@
             <div class="wl"><span>/weekly</span><span style="color: var(--claude);">72%</span></div>
             <div class="wt"><div class="wf" style="--w: 0.72; background: var(--claude);"></div></div>
           </div>
-        </div>
+        </div></div>
 
-        <div class="wcard f2">
+        <div class="wslot f2"><div class="wcard">
           <div class="wtop"><b>all tools</b><span>upd 2m</span></div>
           <div class="wline">
             <div class="wl"><span>claude</span><span style="color: var(--claude);">58%</span></div>
@@ -557,15 +582,15 @@
             <div class="wl"><span>cursor</span><span style="color: var(--cursor);">41%</span></div>
             <div class="wt"><div class="wf" style="--w: 0.41; background: var(--cursor);"></div></div>
           </div>
-        </div>
+        </div></div>
 
-        <div class="wcard lock f3">
+        <div class="wslot f3"><div class="wcard lock">
           <div class="ring"><i>58</i></div>
           <div>
             <div style="color: var(--ink); font-size: 0.8rem;">claude /session</div>
             <div style="color: var(--faint); font-size: 0.7rem; margin-top: 3px;">resets in 3h 42m · lock screen</div>
           </div>
-        </div>
+        </div></div>
       </div>
 
       <ul class="features rv late">
@@ -712,10 +737,9 @@
     function cycleSkins() {
       var i = 0;
       var order = [];
-      // Two quick passes through the palette, then land on statusline.
-      for (var pass = 0; pass < 2; pass += 1) {
-        for (var k = 1; k < SKINS.length; k += 1) order.push(k);
-      }
+      // One pass. 170ms per skin is about the floor for the eye to actually
+      // register a distinct surface; faster reads as a smear.
+      for (var k = 1; k < SKINS.length; k += 1) order.push(k);
       order.push(0);
       (function step() {
         if (i >= order.length) { setSkin(0); return; }
@@ -723,7 +747,7 @@
         i += 1;
         // Fast click-through that decelerates into the final skin.
         var remaining = order.length - i;
-        var delay = remaining < 6 ? 95 + (6 - remaining) * 65 : 95;
+        var delay = remaining < 6 ? 170 + (6 - remaining) * 90 : 170;
         setTimeout(step, delay);
       })();
     }
