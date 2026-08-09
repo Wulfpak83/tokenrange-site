@@ -1,0 +1,19 @@
+# Token Range
+
+> iOS app showing live rate limits for AI coding tools (Claude Code, Codex,
+> Cursor) in the app, on Home Screen widgets, and on the Lock Screen.
+> Credentials stay in the device Keychain and are sent only to the provider
+> over HTTPS. There is no Token Range server, no analytics, and no account.
+
+Key facts:
+- Platform: iOS 17 or later (iPhone).
+- Supported tools at launch: Claude Code, Codex, Cursor. More planned.
+- Pricing: one connected tool free forever; Lifetime Pro is a one-time
+  USD 9.99 purchase (all providers, widgets, and 16 themes). No subscription.
+- Privacy: on-device only. Keychain-stored credentials, HTTPS to providers,
+  no first-party server, no tracking.
+- Shows: session windows, weekly caps, percent remaining, reset countdowns,
+  pace alerts before a limit runs out.
+
+## Pages
+- [Home](https://tokenrange.app/): product overview, live-limit demo, FAQ.
