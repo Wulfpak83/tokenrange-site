@@ -383,6 +383,11 @@
   }
   footer .prompt { margin-bottom: 10px; color: var(--ink-on-amber); font-weight: 700; }
   footer .prompt .chev { color: var(--red-on-amber); }
+  footer .legal { margin-top: 14px; }
+  footer .legal a {
+    color: var(--ink-on-amber); margin-right: 18px;
+    text-underline-offset: 3px; text-decoration-thickness: 1px;
+  }
 
   /* ---- reveals: visible by default, entrance on observe only ---- */
   @media (prefers-reduced-motion: no-preference) {
@@ -652,6 +657,7 @@
     <p class="prompt"><span class="path">~/tokenrange</span> <span class="chev">❯</span> exit</p>
     <p>Token Range: live limits for AI coding tools. Built for people who
     read their terminal more than their phone.</p>
+    <p class="legal"><a href="/privacy">Privacy</a> <a href="/support">Support</a></p>
   </div>
 </footer>
 

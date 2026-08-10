@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Token Range</title>
+<meta name="description" content="Help for Token Range: connecting providers, widget freshness, restoring Lifetime Pro, and how to reach a human.">
+<link rel="canonical" href="https://tokenrange.app/support">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Support — Token Range">
+<meta property="og:description" content="Help for Token Range: connecting providers, widget freshness, restoring Lifetime Pro, and how to reach a human.">
+<meta property="og:url" content="https://tokenrange.app/support">
+<meta property="og:image" content="https://tokenrange.app/assets/og.png">
+<meta name="theme-color" content="#0E0E0F">
+<link rel="icon" href="assets/og.png">
+<link rel="apple-touch-icon" href="assets/og.png">
+<style>
+  :root {
+    --bg: #0E0E0F; --surface: #151515; --ink: #EDEBE6; --dim: #9C9C98;
+    --faint: #82817C; --off: rgba(237, 235, 230, 0.12);
+    --amber: #E0B25E; --red: #F0281E;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--mono); font-size: 15px; line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: min(100% - 40px, 760px); margin-inline: auto; }
+  a { color: var(--amber); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+
+  header { padding: 40px 0 8px; }
+  .prompt { color: var(--dim); font-size: 0.85rem; margin: 0 0 30px; }
+  .prompt .path { color: var(--amber); }
+  .prompt .chev { color: var(--red); }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.16; margin: 0 0 10px; letter-spacing: -0.01em; }
+  .updated { color: var(--faint); font-size: 0.8rem; margin: 0 0 8px; }
+
+  h2 {
+    font-size: 1rem; margin: 38px 0 12px; color: var(--ink);
+    text-transform: lowercase; letter-spacing: 0.02em;
+  }
+  h2::before { content: "~/ "; color: var(--amber); }
+  p { color: var(--dim); margin: 0 0 14px; max-width: 68ch; }
+  strong { color: var(--ink); font-weight: 700; }
+  ul, ol { color: var(--dim); padding-left: 20px; margin: 0 0 14px; max-width: 68ch; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--amber); }
+  code {
+    background: var(--surface); border: 1px solid var(--off); border-radius: 4px;
+    padding: 1px 5px; font-size: 0.88em; color: var(--ink);
+  }
+
+  .contact {
+    background: var(--surface); border: 1px solid var(--off); border-radius: 10px;
+    padding: 18px 20px; margin: 26px 0 6px;
+  }
+  .contact p { color: var(--ink); margin: 0 0 6px; }
+  .contact p:last-child { margin: 0; color: var(--dim); font-size: 0.86rem; }
+  .contact a { font-size: 1.05rem; font-weight: 700; }
+
+  details {
+    border-top: 1px solid var(--off); padding: 14px 0;
+  }
+  details:last-of-type { border-bottom: 1px solid var(--off); }
+  summary {
+    cursor: pointer; list-style: none; color: var(--ink);
+    display: flex; gap: 10px; align-items: baseline;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "❯"; color: var(--red); transition: transform 0.18s ease-out; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details p, details ol, details ul { margin-top: 12px; padding-left: 24px; }
+  details ol, details ul { padding-left: 44px; }
+
+  footer {
+    border-top: 1px solid var(--off); margin-top: 46px;
+    padding: 26px 0 60px; color: var(--faint); font-size: 0.8rem;
+  }
+  footer .prompt { margin: 0 0 10px; }
+  footer nav a { margin-right: 18px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    summary::before { transition: none; }
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #FBFAF7; --surface: #FFFFFF; --ink: #18140C; --dim: #4A473F;
+            --faint: #6E6B62; --off: rgba(24, 20, 12, 0.14); --amber: #8A6416; --red: #95110A; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="prompt"><span class="path">~/tokenrange</span> <span class="chev">❯</span> man tokenrange</p>
+  <h1>Support</h1>
+  <p class="updated">Token Range for iOS 17 and later</p>
+</header>
+
+<main class="wrap">
+
+  <div class="contact">
+    <p><a href="mailto:support@tokenrange.app">support@tokenrange.app</a></p>
+    <p>One developer reads this. Expect a reply within two business days.
+    Include your iOS version, your Token Range version (Settings, at the
+    bottom), and which provider is misbehaving.</p>
+  </div>
+
+  <h2>common questions</h2>
+
+  <details>
+    <summary>A provider will not connect.</summary>
+    <ol>
+      <li>Confirm you can sign in to that provider in Safari on the same
+      device. Token Range uses the provider's own sign-in page, so if that
+      page fails, the connection cannot succeed.</li>
+      <li>In Settings, disconnect the provider and connect it again. Sign-in
+      tokens expire and a stale one cannot always refresh itself.</li>
+      <li>If your account uses SSO through an employer, the provider may block
+      third-party sign-in entirely. That restriction sits with the provider.</li>
+    </ol>
+  </details>
+
+  <details>
+    <summary>My widget shows an older percentage than the app.</summary>
+    <p>This is expected, and the widget says so. iOS decides when a widget may
+    refresh, and it will not wake an app on demand. The countdown to your next
+    reset keeps ticking on its own, but the percentage is only as fresh as the
+    last time the app refreshed. Open Token Range, or tap refresh, and the
+    widget catches up.</p>
+  </details>
+
+  <details>
+    <summary>I paid for Lifetime Pro but the app still looks locked.</summary>
+    <p>Open Settings and tap <strong>Restore purchases</strong>. Purchases are
+    tied to the Apple ID that bought them, so check you are signed into that
+    same Apple ID. If it still does not unlock, email your App Store receipt
+    and it will be sorted out.</p>
+  </details>
+
+  <details>
+    <summary>Is Lifetime Pro a subscription?</summary>
+    <p>No. It is one payment of $9.99 and it does not renew. There is no
+    monthly or yearly plan and there is no plan to add one.</p>
+  </details>
+
+  <details>
+    <summary>What happens to my credentials?</summary>
+    <p>They are written to the iOS Keychain on your device and are sent only
+    to the provider that issued them. There is no Token Range server, no
+    account, and no analytics. Full detail is in the
+    <a href="/privacy">privacy policy</a>.</p>
+  </details>
+
+  <details>
+    <summary>Why are the numbers percentages instead of tokens or dollars?</summary>
+    <p>Because that is what the providers actually return. Their endpoints
+    report how much of a limit window remains and when it resets, not token
+    counts or spend. Token Range shows what is real and does not estimate the
+    rest.</p>
+  </details>
+
+  <details>
+    <summary>My history is empty.</summary>
+    <p>Tracking starts the day you connect. History is never backfilled or
+    invented, so a new install genuinely has nothing to show yet.</p>
+  </details>
+
+  <details>
+    <summary>How do I delete my data?</summary>
+    <p>Delete the app. That removes the Keychain credentials and all local
+    data. Nothing is held anywhere else, so nothing else needs erasing.</p>
+  </details>
+
+  <details>
+    <summary>Where are Grok and Antigravity?</summary>
+    <p>Not in this version. They are listed as coming soon rather than shipped
+    half-working.</p>
+  </details>
+
+  <h2>bugs and requests</h2>
+  <p>Both go to the same address. A bug report gets fixed faster with the
+  steps you took, what you expected, and what happened instead. Feature
+  requests are read and genuinely do shape what gets built.</p>
+
+  <h2>not affiliated</h2>
+  <p>Token Range is an independent app and is not affiliated with, endorsed by,
+  or sponsored by Anthropic, OpenAI, Anysphere, Google, or xAI. Provider names
+  identify the services you choose to connect and remain the trademarks of
+  their owners. If a provider changes how its usage data works, Token Range can
+  break through no fault of yours — that is the honest risk of this category,
+  and fixes ship as fast as they can be written.</p>
+
+  <h2>refunds</h2>
+  <p>Purchases run through Apple, so refunds do too. Go to
+  <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, sign
+  in, and pick the purchase. The developer cannot issue an App Store refund
+  directly. If something is broken, email first and it may not need one.</p>
+
+</main>
+
+<footer class="wrap">
+  <p class="prompt"><span class="path">~/tokenrange</span> <span class="chev">❯</span> exit</p>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+</footer>
+
+</body>
+</html>

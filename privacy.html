@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Token Range</title>
+<meta name="description" content="Token Range collects nothing. Credentials stay in the iOS Keychain on your device, and there is no Token Range server.">
+<link rel="canonical" href="https://tokenrange.app/privacy">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy Policy — Token Range">
+<meta property="og:description" content="Token Range collects nothing. Credentials stay in the iOS Keychain on your device, and there is no Token Range server.">
+<meta property="og:url" content="https://tokenrange.app/privacy">
+<meta property="og:image" content="https://tokenrange.app/assets/og.png">
+<meta name="theme-color" content="#0E0E0F">
+<link rel="icon" href="assets/og.png">
+<link rel="apple-touch-icon" href="assets/og.png">
+<style>
+  :root {
+    --bg: #0E0E0F; --surface: #151515; --ink: #EDEBE6; --dim: #9C9C98;
+    --faint: #82817C; --off: rgba(237, 235, 230, 0.12);
+    --amber: #E0B25E; --red: #F0281E;
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--mono); font-size: 15px; line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: min(100% - 40px, 760px); margin-inline: auto; }
+  a { color: var(--amber); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+
+  header { padding: 40px 0 8px; }
+  .prompt { color: var(--dim); font-size: 0.85rem; margin: 0 0 30px; }
+  .prompt .path { color: var(--amber); }
+  .prompt .chev { color: var(--red); }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.16; margin: 0 0 10px; letter-spacing: -0.01em; }
+  .updated { color: var(--faint); font-size: 0.8rem; margin: 0 0 8px; }
+
+  main { padding-bottom: 20px; }
+  h2 {
+    font-size: 1rem; margin: 38px 0 12px; color: var(--ink);
+    text-transform: lowercase; letter-spacing: 0.02em;
+  }
+  h2::before { content: "~/ "; color: var(--amber); }
+  p { color: var(--dim); margin: 0 0 14px; max-width: 68ch; }
+  strong { color: var(--ink); font-weight: 700; }
+  ul { color: var(--dim); padding-left: 20px; margin: 0 0 14px; max-width: 68ch; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--amber); }
+  code {
+    background: var(--surface); border: 1px solid var(--off); border-radius: 4px;
+    padding: 1px 5px; font-size: 0.88em; color: var(--ink);
+  }
+
+  .lede {
+    background: var(--surface); border: 1px solid var(--off); border-radius: 10px;
+    padding: 18px 20px; margin: 26px 0 6px;
+  }
+  .lede p { color: var(--ink); margin: 0; }
+
+  table { border-collapse: collapse; width: 100%; margin: 0 0 16px; font-size: 0.86rem; }
+  .scroller { overflow-x: auto; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--off); vertical-align: top; }
+  th { color: var(--ink); font-weight: 700; white-space: nowrap; }
+  td { color: var(--dim); }
+
+  footer {
+    border-top: 1px solid var(--off); margin-top: 46px;
+    padding: 26px 0 60px; color: var(--faint); font-size: 0.8rem;
+  }
+  footer .prompt { margin: 0 0 10px; }
+  footer nav a { margin-right: 18px; }
+
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #FBFAF7; --surface: #FFFFFF; --ink: #18140C; --dim: #4A473F;
+            --faint: #6E6B62; --off: rgba(24, 20, 12, 0.14); --amber: #8A6416; --red: #95110A; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="prompt"><span class="path">~/tokenrange</span> <span class="chev">❯</span> cat privacy</p>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated 10 August 2026</p>
+</header>
+
+<main class="wrap">
+
+  <div class="lede">
+    <p>Token Range collects no personal data. There is no Token Range server,
+    no account, and no analytics. Your provider credentials are stored in the
+    iOS Keychain on your device and are sent only to the provider that issued
+    them.</p>
+  </div>
+
+  <h2>who this is from</h2>
+  <p>Token Range is an iOS app published by Shay Soyele, an independent
+  developer. Questions about this policy go to
+  <a href="mailto:support@tokenrange.app">support@tokenrange.app</a>.</p>
+
+  <h2>what is collected</h2>
+  <p><strong>Nothing.</strong> Token Range has no backend. It does not create
+  an account, does not ask for your name or email, does not use analytics or
+  crash-reporting services, and contains no advertising or tracking SDKs.
+  Nothing you do in the app is transmitted to the developer, because there is
+  nowhere for it to be transmitted to.</p>
+  <p>Because no data is collected, no data is sold, shared, or used for
+  tracking across apps or websites, and there is no profile to build.</p>
+
+  <h2>your provider credentials</h2>
+  <p>When you connect an AI coding tool, that provider's sign-in flow returns
+  an access token. That token is written to the <strong>iOS Keychain</strong>,
+  the encrypted credential store built into your device.</p>
+  <ul>
+    <li>Tokens never leave the device except in requests to the provider that
+    issued them.</li>
+    <li>Tokens are not written to logs, files, screenshots, or backups managed
+    by the app.</li>
+    <li>Deleting the app, or disconnecting a provider in Settings, removes the
+    stored credential.</li>
+  </ul>
+  <p>Sign-in uses OAuth with PKCE where the provider supports it, so your
+  password is entered on the provider's own page and is never seen by Token
+  Range.</p>
+
+  <h2>what the app connects to</h2>
+  <p>Every request is made directly from your device over HTTPS. The full list
+  of hosts the app can contact:</p>
+  <div class="scroller">
+  <table>
+    <thead>
+      <tr><th>Host</th><th>Why</th><th>Sends your data?</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Anthropic (Claude Code)</td>
+        <td>Sign-in and reading your own usage limits</td>
+        <td>Your Claude credential only</td>
+      </tr>
+      <tr>
+        <td>OpenAI (Codex)</td>
+        <td>Sign-in and reading your own usage limits</td>
+        <td>Your Codex credential only</td>
+      </tr>
+      <tr>
+        <td>Cursor</td>
+        <td>Sign-in and reading your own usage limits</td>
+        <td>Your Cursor credential only</td>
+      </tr>
+      <tr>
+        <td><code>openrouter.ai</code></td>
+        <td>Reads OpenRouter's public list of AI models so the app can tell you
+        when a new model appears</td>
+        <td><strong>No.</strong> Unauthenticated request, no credential, no
+        identifier, nothing about you</td>
+      </tr>
+      <tr>
+        <td>Apple (App Store)</td>
+        <td>Processing the one-time Lifetime Pro purchase</td>
+        <td>Handled entirely by Apple; the developer never sees your payment
+        details</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Token Range talks to no other server. It has no server of its own to talk
+  to.</p>
+
+  <h2>what stays on your device</h2>
+  <p>Your connected providers, usage history, alert thresholds, theme choice,
+  and widget settings are stored locally in an app group container shared
+  between the app and its widgets. This data is not readable by other apps and
+  is never uploaded.</p>
+
+  <h2>purchases</h2>
+  <p>Lifetime Pro is a single one-time purchase of $9.99. It is processed by
+  Apple through the App Store. Apple does not give the developer your name,
+  email, or payment method. There is no subscription.</p>
+
+  <h2>notifications</h2>
+  <p>If you allow notifications, alerts about limit resets and thresholds are
+  scheduled locally on your device by iOS. There are no push notifications,
+  so no notification token is registered or transmitted.</p>
+
+  <h2>children</h2>
+  <p>Token Range is a developer tool and is not directed at children under 13.
+  It collects no data from anyone, children included.</p>
+
+  <h2>your rights</h2>
+  <p>Rights such as access, correction, deletion, and portability under the
+  GDPR, the CCPA, and similar laws apply to data a company holds about you.
+  The developer holds none. To erase everything Token Range has stored, delete
+  the app; that removes the Keychain entries and the local data with it.</p>
+
+  <h2>changes</h2>
+  <p>If this policy changes, the date at the top changes with it, and a
+  material change will be noted in the App Store release notes. Any future
+  version that collected data would require your explicit consent first.</p>
+
+  <h2>terms of use</h2>
+  <p>Token Range is licensed under Apple's
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed
+  Application End User License Agreement</a>, the standard EULA that applies to
+  App Store apps.</p>
+
+  <h2>not affiliated</h2>
+  <p>Token Range is an independent app and is not affiliated with, endorsed by,
+  or sponsored by Anthropic, OpenAI, Anysphere, Google, or xAI. Provider names
+  are used only to identify the services you choose to connect, and each
+  remains the trademark of its owner.</p>
+
+  <h2>contact</h2>
+  <p><a href="mailto:support@tokenrange.app">support@tokenrange.app</a></p>
+
+</main>
+
+<footer class="wrap">
+  <p class="prompt"><span class="path">~/tokenrange</span> <span class="chev">❯</span> exit</p>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/support">Support</a>
+  </nav>
+</footer>
+
+</body>
+</html>
