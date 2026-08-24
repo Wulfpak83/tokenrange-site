@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Token Range</title>
-<meta name="description" content="Token Range collects nothing. Credentials stay in the iOS Keychain on your device, and there is no Token Range server.">
+<meta name="description" content="Token Range collects nothing. Credentials stay in the Apple Keychain on your iPhone or Mac, and there is no Token Range server.">
 <link rel="canonical" href="https://tokenrange.app/privacy/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy Policy — Token Range">
-<meta property="og:description" content="Token Range collects nothing. Credentials stay in the iOS Keychain on your device, and there is no Token Range server.">
+<meta property="og:description" content="Token Range collects nothing. Credentials stay in the Apple Keychain on your iPhone or Mac, and there is no Token Range server.">
 <meta property="og:url" content="https://tokenrange.app/privacy/">
 <meta property="og:image" content="https://tokenrange.app/assets/og.png">
 <meta name="theme-color" content="#0E0E0F">
@@ -35,7 +35,7 @@
 <header class="wrap">
   <p class="prompt"><span class="path">~/tokenrange</span> <span class="chev">❯</span> cat privacy</p>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated 10 August 2026</p>
+  <p class="updated">Last updated 24 August 2026</p>
 </header>
 
 <main class="wrap">
@@ -43,13 +43,13 @@
   <div class="lede">
     <p>Token Range collects no personal data. There is no Token Range server,
     no account, and no analytics. Your provider credentials are stored in the
-    iOS Keychain on your device and are sent only to the provider that issued
-    them.</p>
+    Apple Keychain on your iPhone or Mac and are sent only to the provider
+    that issued them.</p>
   </div>
 
   <h2>who this is from</h2>
-  <p>Token Range is an iOS app published by Shay Soyele, an independent
-  developer. Questions about this policy go to
+  <p>Token Range is an iPhone and Mac app published by Oluwaseye Soyele, an
+  independent developer. Questions about this policy go to
   <a href="mailto:support@tokenrange.app">support@tokenrange.app</a>.</p>
 
   <h2>what is collected</h2>
@@ -63,15 +63,17 @@
 
   <h2>your provider credentials</h2>
   <p>When you connect an AI coding tool, that provider's sign-in flow returns
-  an access token. That token is written to the <strong>iOS Keychain</strong>,
+  an access token. That token is written to the <strong>Apple Keychain</strong>,
   the encrypted credential store built into your device.</p>
   <ul>
     <li>Tokens never leave the device except in requests to the provider that
     issued them.</li>
     <li>Tokens are not written to logs, files, screenshots, or backups managed
     by the app.</li>
-    <li>Deleting the app, or disconnecting a provider in Settings, removes the
-    stored credential.</li>
+    <li>Disconnecting a provider in the app removes that provider's stored
+    credential and current connection record.</li>
+    <li>Disconnect every provider before uninstalling Token Range. Deleting an
+    app does not guarantee that Apple Keychain items are removed.</li>
   </ul>
   <p>Sign-in uses OAuth with PKCE where the provider supports it, so your
   password is entered on the provider's own page and is never seen by Token
@@ -131,19 +133,22 @@
   to.</p>
 
   <h2>what stays on your device</h2>
-  <p>Your connected providers, usage history, alert thresholds, theme choice,
-  and widget settings are stored locally in an app group container shared
-  between the app and its widgets. This data is not readable by other apps and
-  is never uploaded.</p>
+  <p>Your connected-provider list, usage history, alert thresholds, theme
+  choice, and display settings are stored locally in Apple-managed app
+  containers. On iPhone, widget-safe usage data is shared with Token Range's
+  widgets through its private App Group. On Mac, the menu-bar app keeps its own
+  private App Group data. Provider credentials are never stored in either App
+  Group. None of this data is uploaded to Token Range.</p>
 
   <h2>purchases</h2>
-  <p>Lifetime Pro is a single one-time purchase of $9.99. It is processed by
-  Apple through the App Store. Apple does not give the developer your name,
-  email, or payment method. There is no subscription.</p>
+  <p>Lifetime Pro is a single one-time purchase. Apple displays the current
+  local price before purchase and processes it through the App Store. Apple
+  does not give the developer your name, email, or payment method. There is no
+  subscription.</p>
 
   <h2>notifications</h2>
   <p>If you allow notifications, alerts about limit resets and thresholds are
-  scheduled locally on your device by iOS. There are no push notifications,
+  scheduled locally by iOS or macOS. There are no push notifications,
   so no notification token is registered or transmitted.</p>
 
   <h2>children</h2>
@@ -153,8 +158,12 @@
   <h2>your rights</h2>
   <p>Rights such as access, correction, deletion, and portability under the
   GDPR, the CCPA, and similar laws apply to data a company holds about you.
-  The developer holds none. To erase everything Token Range has stored, delete
-  the app; that removes the Keychain entries and the local data with it.</p>
+  The developer holds none and therefore cannot erase it remotely. To remove
+  your provider credentials, disconnect every provider inside Token Range
+  before uninstalling. Other settings, snapshots, and history remain only in
+  Apple-managed local containers until you remove the app and any retained
+  container data through the operating system. If you already uninstalled the
+  app or need platform-specific cleanup steps, contact support.</p>
 
   <h2>changes</h2>
   <p>If this policy changes, the date at the top changes with it, and a

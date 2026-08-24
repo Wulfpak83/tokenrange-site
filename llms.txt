@@ -1,17 +1,18 @@
 # Token Range
 
-> iOS app showing live rate limits for AI coding tools (Claude Code, Codex,
-> Cursor, Grok, Antigravity) in the app, on Home Screen widgets, and on the
-> Lock Screen.
+> iPhone and Mac app showing live rate limits for AI coding tools (Claude Code,
+> Codex, Cursor, Grok, Antigravity) in the app, in the Mac menu bar, on iPhone
+> Home Screen widgets, and on the iPhone Lock Screen.
 > Credentials stay in the device Keychain and are sent only to the provider
 > over HTTPS. There is no Token Range server, no analytics, and no account.
 
 Key facts:
-- Platform: iOS 17 or later (iPhone).
+- Platforms: iOS 17 or later (iPhone) and macOS 13 or later.
 - Supported tools at launch: Claude Code, Codex, Cursor, Grok,
   Antigravity. More planned.
-- Pricing: one connected tool free forever; Lifetime Pro is a one-time
-  USD 9.99 purchase (all providers, widgets, and 16 themes). No subscription.
+- Pricing: one connected account and every widget free forever; Lifetime Pro is a one-time
+  purchase (additional accounts and 16 themes). Apple displays the current
+  local price. No subscription.
 - Privacy: on-device only. Keychain-stored credentials, HTTPS to providers,
   no first-party server, no tracking.
 - Shows: session windows, weekly caps, percent remaining, reset countdowns,
@@ -19,3 +20,9 @@ Key facts:
 
 ## Pages
 - [Home](https://tokenrange.app/): product overview, live-limit demo, FAQ.
+- [Privacy](https://tokenrange.app/privacy/): on-device data handling,
+  Keychain credentials, provider connections, purchases, and deletion steps.
+- [Terms](https://tokenrange.app/terms/): provider-account responsibilities,
+  accuracy, Lifetime Pro, acceptable use, and liability.
+- [Support](https://tokenrange.app/support/): connection help, widget freshness,
+  purchase restore, data removal, refunds, and human support.

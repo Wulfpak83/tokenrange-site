@@ -48,7 +48,7 @@
 <header class="wrap">
   <p class="prompt"><span class="path">~/tokenrange</span> <span class="chev">❯</span> man tokenrange</p>
   <h1>Support</h1>
-  <p class="updated">Token Range for iOS 17 and later</p>
+  <p class="updated">Token Range for iOS 17 and later, and macOS 13 and later</p>
 </header>
 
 <main class="wrap">
@@ -56,8 +56,8 @@
   <div class="contact">
     <p><a href="mailto:support@tokenrange.app">support@tokenrange.app</a></p>
     <p>One developer reads this. Expect a reply within two business days.
-    Include your iOS version, your Token Range version (Settings, at the
-    bottom), and which provider is misbehaving.</p>
+    Include your iOS or macOS version, your Token Range version (Settings, at
+    the bottom), and which provider is misbehaving.</p>
   </div>
 
   <h2>common questions</h2>
@@ -65,7 +65,7 @@
   <details>
     <summary>A provider will not connect.</summary>
     <ol>
-      <li>Confirm you can sign in to that provider in Safari on the same
+      <li>Confirm you can sign in to that provider in a browser on the same
       device. Token Range uses the provider's own sign-in page, so if that
       page fails, the connection cannot succeed.</li>
       <li>In Settings, disconnect the provider and connect it again. Sign-in
@@ -76,7 +76,7 @@
   </details>
 
   <details>
-    <summary>My widget shows an older percentage than the app.</summary>
+    <summary>My iPhone widget shows an older percentage than the app.</summary>
     <p>This is expected, and the widget says so. iOS decides when a widget may
     refresh, and it will not wake an app on demand. The countdown to your next
     reset keeps ticking on its own, but the percentage is only as fresh as the
@@ -94,24 +94,25 @@
 
   <details>
     <summary>Is Lifetime Pro a subscription?</summary>
-    <p>No. It is one payment of $9.99 and it does not renew. There is no
-    monthly or yearly plan and there is no plan to add one.</p>
+    <p>No. It is one payment and it does not renew. Apple shows the local price
+    before purchase. There is no monthly or yearly plan and there is no plan
+    to add one.</p>
   </details>
 
   <details>
     <summary>What happens to my credentials?</summary>
-    <p>They are written to the iOS Keychain on your device and are sent only
-    to the provider that issued them. There is no Token Range server, no
-    account, and no analytics. Full detail is in the
+    <p>They are written to the Apple Keychain on your iPhone or Mac and are
+    sent only to the provider that issued them. There is no Token Range server,
+    no account, and no analytics. Full detail is in the
     <a href="/privacy/">privacy policy</a>.</p>
   </details>
 
   <details>
     <summary>Why are the numbers percentages instead of tokens or dollars?</summary>
-    <p>Because that is what the providers actually return. Their endpoints
-    report how much of a limit window remains and when it resets, not token
-    counts or spend. Token Range shows what is real and does not estimate the
-    rest.</p>
+    <p>Providers report how much of a limit window remains and when it resets.
+    Some also report spend or balance details; Token Range shows those only
+    when the provider returns them. Providers do not report token counts, so
+    Token Range does not invent them.</p>
   </details>
 
   <details>
@@ -122,14 +123,18 @@
 
   <details>
     <summary>How do I delete my data?</summary>
-    <p>Delete the app. That removes the Keychain credentials and all local
-    data. Nothing is held anywhere else, so nothing else needs erasing.</p>
+    <p>First, disconnect every provider inside Token Range. That removes each
+    Keychain credential and current connection record. Then uninstall the app.
+    Apple may retain Keychain items or local Mac container data after an app is
+    removed, which is why disconnecting first matters. If Token Range is
+    already uninstalled, email support for platform-specific cleanup steps.
+    The developer holds no copy and cannot erase this local data remotely.</p>
   </details>
 
   <details>
     <summary>Which tools does Token Range read?</summary>
     <p>Five at launch: Claude Code, Codex, Cursor, Grok, and Antigravity. One
-    connected tool is free forever; Lifetime Pro unlocks the rest.</p>
+    connected account is free forever; Lifetime Pro unlocks additional accounts.</p>
   </details>
 
   <h2>bugs and requests</h2>
@@ -141,9 +146,9 @@
   <p>Token Range is an independent app and is not affiliated with, endorsed by,
   or sponsored by Anthropic, OpenAI, Anysphere, Google, or xAI. Provider names
   identify the services you choose to connect and remain the trademarks of
-  their owners. If a provider changes how its usage data works, Token Range can
-  break through no fault of yours — that is the honest risk of this category,
-  and fixes ship as fast as they can be written.</p>
+  their owners. If a provider changes its sign-in or usage service, that
+  provider's meter may pause until Token Range is updated. Other provider
+  connections and your local data remain separate.</p>
 
   <h2>refunds</h2>
   <p>Purchases run through Apple, so refunds do too. Go to
