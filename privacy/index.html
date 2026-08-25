@@ -126,10 +126,12 @@
   to.</p>
 
   <h2>what stays on your device</h2>
-  <p>Your connected providers, usage history, alert thresholds, theme choice,
-  and widget settings are stored locally in an app group container shared
-  between the app and its widgets. This data is not readable by other apps and
-  is never uploaded.</p>
+  <p>Provider credentials remain only in the device-only iOS Keychain. Token
+  Range stores app settings and observed quota history locally. Widgets never
+  receive credentials or contact providers; they read only the app's locally
+  derived App Group snapshot and widget preferences. That snapshot contains
+  the allowance percentages, reset times, freshness, and display data needed
+  to render the widgets. None of this data is uploaded to Token Range.</p>
 
   <h2>purchases</h2>
   <p>Lifetime Pro is a single one-time purchase. Apple displays the current
