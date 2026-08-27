@@ -170,6 +170,7 @@
     transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   }
   a.cta:hover { transform: translateY(-2px); }
+  a.cta:active { transform: translateY(0) scale(0.97); transition-duration: 0.08s; }
   .cta.compact { font-size: var(--t-sm); padding: 10px 16px; }
   /* Reads as a status, not a button: nothing here is tappable until the
      App Store link exists, and a dead filled button is a broken promise. */
@@ -402,7 +403,7 @@
     display: flex; gap: 12px; align-items: baseline; font-size: var(--t-xl);
   }
   details summary::-webkit-details-marker { display: none; }
-  details summary::before { content: "❯"; color: var(--red); transition: transform 0.18s ease-out; }
+  details summary::before { content: "❯"; color: var(--red); transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1); }
   details[open] summary::before { transform: rotate(90deg); }
   details p { margin-top: 12px; padding-left: 24px; color: var(--dim); max-width: 60ch; }
 
