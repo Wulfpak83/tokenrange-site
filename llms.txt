@@ -10,13 +10,13 @@ Key facts:
 - Platform: iOS 17 or later (iPhone).
 - Supported tools at launch: Claude Code, Codex, Cursor, Grok,
   Antigravity. More planned.
-- Pricing: one connected account free forever, with widgets included;
-  Lifetime Pro is a one-time purchase for more accounts and premium themes.
-  No subscription.
+- Pricing: Lifetime Pro is a one-time purchase that unlocks all Token Range
+  features. Future updates and new features are included. No subscription
+  or recurring fees.
 - Privacy: on-device only. Keychain-stored credentials, HTTPS to providers,
   no first-party server, no tracking.
 - Shows: session windows, weekly caps, percent remaining, reset countdowns,
   pace alerts before a limit runs out.
 
 ## Pages
-- [Home](https://tokenrange.app/): product overview, live-limit demo, FAQ.
+- [Home](https://tokenrange.app/): product overview, widget examples, FAQ.
