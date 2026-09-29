@@ -280,11 +280,12 @@
   .widget-piece { margin: 0; }
   .widget-piece svg { display: block; width: 100%; height: auto; box-shadow: 0 12px 24px rgba(20,20,20,.18); background: var(--bg); overflow: hidden; }
   .widget-piece.small { grid-column: 1; grid-row: 1; transform: rotate(-3deg); }
-  .widget-piece.small svg { border-radius: 22%; }
+  .widget-piece.small svg, .widget-piece.small img { border-radius: 22%; }
   .widget-piece.medium { grid-column: 1 / -1; grid-row: 2; transform: rotate(2deg); }
-  .widget-piece.medium svg { border-radius: 10% / 21%; }
+  .widget-piece.medium svg, .widget-piece.medium img { border-radius: 10% / 21%; }
   .widget-piece.large { grid-column: 2; grid-row: 1; transform: rotate(-1deg); }
-  .widget-piece.large svg { border-radius: 10%; }
+  .widget-piece.large svg, .widget-piece.large img { border-radius: 10%; }
+  .widget-piece img { display: block; width: 100%; height: auto; box-shadow: 0 12px 24px rgba(20,20,20,.18); }
   .widget-family:first-of-type { grid-template-columns: 1fr .6fr; }
   .widget-family:first-of-type .small { grid-column: 2; transform: rotate(3deg); }
   .widget-family:first-of-type .large { grid-column: 1; transform: rotate(1deg); }
@@ -434,8 +435,8 @@
     </div>
     <div class="hero-shot">
       <div class="phone">
-        <img src="assets/shot-dashboard.png?v=20260914-arches-bars" width="1320" height="2868"
-             alt="Token Range dashboard with sample Claude Fable, weekly and session limits, Codex limits, and Cursor limits in thin open rings"
+        <img src="assets/bento-shot-dashboard.png?v=20260929-bento" width="1206" height="2622"
+             alt="Token Range dashboard with a black Claude tile and white Codex, Cursor, Claude work, and OpenRouter tiles, each with grid-cell meters, sample data"
              fetchpriority="high">
       </div>
     </div>
@@ -462,14 +463,14 @@
           <small>Widgets shown with sample data.</small>
         </figcaption>
           <div class="widget-family">
-            <div class="widget-piece small"><svg viewBox="696 1586 528 530" role="img" aria-label="Small Arches widget showing five providers with sample data"><image href="assets/widget-bars-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece medium"><svg viewBox="96 1586 1128 530" role="img" aria-label="Medium Arches widget showing five providers with sample data"><image href="assets/widget-medium-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece large"><svg viewBox="96 282 1128 1182" role="img" aria-label="Large Arches widget showing five providers with sample data"><image href="assets/widget-arches-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
+            <div class="widget-piece small"><img src="assets/bento-widget-small.png?v=20260929-bento" width="489" height="479" alt="Single Limit widget showing Claude's 5-hour window with sample data"></div>
+            <div class="widget-piece medium"><img src="assets/bento-widget-medium.png?v=20260929-bento" width="488" height="479" alt="Medium Arches widget showing four providers as ring gauges with sample data"></div>
+            <div class="widget-piece large"><img src="assets/bento-widget-large.png?v=20260929-bento" width="1059" height="484" alt="Large Cells widget showing four providers as a grid-cell list with sample data"></div>
           </div>
           <div class="widget-family">
-            <div class="widget-piece small"><svg viewBox="96 1586 528 530" role="img" aria-label="Small Bars widget showing five providers with sample data"><image href="assets/widget-bars-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece medium"><svg viewBox="96 934 1128 530" role="img" aria-label="Medium Bars widget showing five providers with sample data"><image href="assets/widget-medium-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece large"><svg viewBox="96 282 1128 1182" role="img" aria-label="Large Bars widget showing five providers with sample data"><image href="assets/widget-bars-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
+            <div class="widget-piece small"><img src="assets/bento-widget-small.png?v=20260929-bento" width="489" height="479" alt="Single Limit widget showing Claude's 5-hour window with sample data"></div>
+            <div class="widget-piece medium"><img src="assets/bento-widget-medium.png?v=20260929-bento" width="488" height="479" alt="Medium Arches widget showing four providers as ring gauges with sample data"></div>
+            <div class="widget-piece large"><img src="assets/bento-widget-large.png?v=20260929-bento" width="1059" height="484" alt="Large Cells widget showing four providers as a grid-cell list with sample data"></div>
           </div>
       </figure>
 
@@ -485,8 +486,8 @@
         </div>
         <div class="shot">
           <div class="phone">
-            <img src="assets/shot-themes.png?v=20260914-arches-bars" width="1320" height="2868"
-                 alt="Token Range theme picker showing light and dark palettes with open arch previews">
+            <img src="assets/bento-shot-themes.png?v=20260929-bento" width="844" height="1701"
+                 alt="Token Range theme sheet showing house, light, LLM, and terminal skins grouped with PRO locks, canvas in use">
           </div>
         </div>
       </div>
