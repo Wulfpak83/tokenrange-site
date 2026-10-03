@@ -5,9 +5,9 @@
    that uses them. */
 
 :root {
-  --bg: #0E0E0F; --surface: #151515; --ink: #EDEBE6; --dim: #9C9C98;
-  --faint: #82817C; --off: rgba(237, 235, 230, 0.12);
-  --amber: #E0B25E; --red: #F0281E;
+  --bg: #131313; --surface: #1A1A1A; --ink: #F2F1ED; --dim: #A5A39E;
+  --faint: #8E8C87; --off: rgba(242, 241, 237, 0.14);
+  --amber: #F2F1ED; --red: #FF7B70;
   --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 }
 * { box-sizing: border-box; }
@@ -50,8 +50,9 @@ footer {
 }
 footer .prompt { margin: 0 0 10px; }
 footer nav a { margin-right: 18px; }
+footer .compliance { margin-top: 14px; font-size: 0.72rem; max-width: 60ch; }
 
 @media (prefers-color-scheme: light) {
-  :root { --bg: #FBFAF7; --surface: #FFFFFF; --ink: #18140C; --dim: #4A473F;
-          --faint: #6E6B62; --off: rgba(24, 20, 12, 0.14); --amber: #8A6416; --red: #95110A; }
+  :root { --bg: #F2F1ED; --surface: #FFFFFF; --ink: #141414; --dim: #141414;
+          --faint: #696763; --off: rgba(20, 20, 20, 0.14); --amber: #696763; --red: #BD3026; }
 }

@@ -15,9 +15,9 @@
 <meta name="twitter:title" content="Token Range: all your AI usage and limits, in one place">
 <meta name="twitter:description" content="AI usage and rate limits for Claude Code, Codex, Cursor, Grok, and Antigravity. Keychain-only credentials. No server.">
 <meta name="twitter:image" content="https://tokenrange.app/assets/og.png">
-<meta name="theme-color" content="#E0B25E">
-<link rel="icon" href="assets/og.png">
-<link rel="apple-touch-icon" href="assets/og.png">
+<meta name="theme-color" content="#F2F1ED">
+<link rel="icon" href="assets/icon-1024.png">
+<link rel="apple-touch-icon" href="assets/icon-1024.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -75,16 +75,18 @@
 }
 </script>
 <style>
-  /* Token Range site — Direction C "amber drench" (owner pick 2026-08-08).
-     Palette is the app's statusline skin, verbatim. Flat fills only. */
+  /* Token Range site — Bento B recolor (owner pick 2026-09-29).
+     Palette matches the app's Bento B canvas/black-tile look. Flat fills only. */
   :root {
-    --bg: #0E0E0F; --ink: #EDEBE6; --dim: #9C9C98;
-    --faint: #82817C; --off: rgba(237, 235, 230, 0.12);
-    --amber: #E0B25E; --red: #F0281E;
-    --ink-on-amber: #18140C;
-    /* Red is unreadable on amber (2.1:1). This hue-preserved deep red is
-       the amber-context chevron; pure --red stays inside dark cards. */
-    --red-on-amber: #95110A;
+    --page: #F2F1ED;
+    --bg: #131313; --ink: #F2F1ED; --dim: #A5A39E;
+    --faint: #8E8C87; --off: rgba(242, 241, 237, 0.14);
+    --red: #FF7B70;
+    --ink-on-amber: #141414;
+    /* Pure --red is a pale coral tuned for dark tiles and is unreadable on
+       the light page. This deep red is the page-context chevron; pure
+       --red stays inside dark tiles. */
+    --red-on-amber: #BD3026;
     --claude: #D97757; --codex: #8E7CFF; --cursor: #ECECEA;
     --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 
@@ -95,35 +97,36 @@
     --t-md: 0.9rem; --t-lg: 0.98rem; --t-xl: 1.06rem;
 
     /* Radius scale. One value per role, not one per element. */
-    --r-chip: 6px; --r-pill: 10px; --r-control: 12px; --r-card: 20px;
+    --r-chip: 6px; --r-pill: 10px; --r-control: 12px; --r-card: 26px;
     --r-phone: 50px; --r-phone-inner: 41px;
 
     /* One shadow for every card-role surface. Three recipes existed for the
        same job; the differences were never intentional. */
-    --shadow-card: 0 22px 60px rgba(24, 20, 12, 0.28);
-    --shadow-phone: 0 34px 90px rgba(24, 20, 12, 0.4);
+    --shadow-card: 0 22px 60px rgba(20, 20, 20, 0.14);
+    --shadow-phone: 0 34px 90px rgba(20, 20, 20, 0.4);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; min-width: 0; }
-  html { scroll-behavior: smooth; background: var(--amber); }
-  /* Owner ruling 2026-08-09: amber carries the ENTIRE page. Dark surfaces
-     are objects that pop on it, never full-bleed sections. */
+  html { scroll-behavior: smooth; background: var(--page); }
+  /* Owner ruling: the app-canvas gradient carries the ENTIRE page. Dark
+     tiles are objects that pop on it, never full-bleed sections. */
   body {
-    background: var(--amber); color: var(--ink-on-amber); font-family: var(--mono);
+    background: linear-gradient(180deg, #E8E6E0 0%, #F2F1ED 38%, #F7F6F3 100%);
+    color: var(--ink-on-amber); font-family: var(--mono);
     line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
   a { text-decoration: none; }
   /* Keyboard focus had no styling at all and fell back to the UA default,
-     which is close to invisible on the amber. Amber-context controls take the
-     dark ring; the FAQ sits on a dark card, so it takes the amber one. */
+     which is close to invisible on the page. Page-context controls take the
+     dark ring; the FAQ sits on a dark card, so it takes the paper one. */
   a:focus-visible, summary:focus-visible {
     outline: 2px solid var(--ink-on-amber); outline-offset: 3px; border-radius: 4px;
   }
-  .faq-list summary:focus-visible { outline-color: var(--amber); }
-  ::selection { background: var(--ink-on-amber); color: var(--amber); }
+  .faq-list summary:focus-visible { outline-color: #F2F1ED; }
+  ::selection { background: var(--ink-on-amber); color: #F2F1ED; }
   img { max-width: 100%; height: auto; display: block; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
 
-  /* ---- amber hero: the splash, as a website ---- */
+  /* ---- hero: the splash, as a website ---- */
   .drench {
     color: var(--ink-on-amber);
     /* Capped so the hero never balloons on very tall displays. */
@@ -142,7 +145,7 @@
     padding-bottom: clamp(40px, 7vh, 72px);
   }
   .token-mark { width: 88px; height: 88px; margin-bottom: 30px; }
-  .typed { font-size: var(--t-lg); margin-bottom: 18px; color: rgba(24, 20, 12, 0.72); }
+  .typed { font-size: var(--t-lg); margin-bottom: 18px; color: #696763; }
   .typed .caret { animation: blink 1.1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
   h1 {
@@ -155,7 +158,7 @@
   }
   .drench p.sub {
     margin-top: 24px; max-width: 46ch; font-size: clamp(0.98rem, 1.4vw, 1.05rem);
-    color: rgba(24, 20, 12, 0.78); text-wrap: pretty;
+    color: #696763; text-wrap: pretty;
   }
   .drench p.sub b { color: var(--ink-on-amber); font-weight: 700; }
   /* ---- one CTA component ----
@@ -163,7 +166,7 @@
      action on one screen: different radius, padding and hover. They are now
      one component with a compact modifier for the header. */
   .cta {
-    background: var(--ink-on-amber); color: var(--amber);
+    background: var(--ink-on-amber); color: #F2F1ED;
     font-weight: 700; font-size: var(--t-lg); padding: 15px 28px;
     border-radius: var(--r-control); display: inline-block; flex-shrink: 0;
     border: 1px solid transparent;
@@ -176,11 +179,11 @@
      App Store link exists, and a dead filled button is a broken promise. */
   .cta.pending {
     background: none; color: var(--ink-on-amber);
-    border-color: rgba(24, 20, 12, 0.32);
+    border-color: rgba(20, 20, 20, 0.32);
     cursor: default; transform: none;
   }
   .cta-row { display: flex; gap: 16px; align-items: center; margin-top: 34px; flex-wrap: wrap; }
-  .cta-row .note { font-size: var(--t-sm); color: rgba(24, 20, 12, 0.72); flex-basis: 100%; max-width: 46ch; }
+  .cta-row .note { font-size: var(--t-sm); color: #696763; flex-basis: 100%; max-width: 46ch; }
 
   .hero-shot { display: flex; justify-content: center; }
   .phone {
@@ -203,7 +206,7 @@
   /* The closing block follows the FAQ, so it drops its own top padding
      rather than stacking two full section gaps. */
   main section.closing { padding-top: 0; }
-  .kicker { color: rgba(24, 20, 12, 0.72); font-size: var(--t-md); margin-bottom: 16px; }
+  .kicker { color: #696763; font-size: var(--t-md); margin-bottom: 16px; }
   .kicker .path { color: var(--ink-on-amber); font-weight: 700; }
   .kicker .chev { color: var(--red-on-amber); }
   h2 {
@@ -213,7 +216,7 @@
   }
   #faq > h2, .closing > h2 { max-width: none; text-wrap: wrap; }
   section p.lede {
-    color: rgba(24, 20, 12, 0.78); margin-top: 18px; max-width: 56ch; text-wrap: pretty;
+    color: #696763; margin-top: 18px; max-width: 56ch; text-wrap: pretty;
   }
   section.dark p.lede b { color: var(--ink-on-amber); font-weight: 700; }
 
@@ -229,7 +232,7 @@
     background: var(--ink-on-amber);
     transform: rotateY(-22deg) rotateX(9deg) rotateZ(1.5deg);
     transform-style: preserve-3d;
-    box-shadow: -18px 34px 90px rgba(24, 20, 12, 0.42);
+    box-shadow: -18px 34px 90px rgba(20, 20, 20, 0.42);
     transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -265,30 +268,31 @@
   .limits-section h2 { max-width: none; }
   .limits-section > p.lede { max-width: 76ch; }
   .limits-section ul.features { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; max-width: none; margin-top: 24px; }
-  .limits-section ul.features li { border-top: 1px solid rgba(24,20,12,.18); padding: 16px 0; }
+  .limits-section ul.features li { border-top: 1px solid rgba(20,20,20,.18); padding: 16px 0; }
   .limits-section ul.features li:nth-child(-n+2) { border-top: 0; }
   .widget-proof { display: grid; grid-template-columns: 1fr minmax(192px,240px) 1fr; align-items: center; gap: 32px; margin-top: 48px; }
   .widget-proof figcaption { grid-column: 2; grid-row: 1; color: var(--ink-on-amber); text-align: center; font-size: var(--t-md); }
   .widget-proof figcaption h3 { font-size: clamp(1.4rem,2.4vw,1.8rem); line-height: 1.12; letter-spacing: -.03em; margin-bottom: 16px; text-wrap: balance; }
-  .widget-proof figcaption small { display: block; margin-top: 16px; color: rgba(24,20,12,.72); font-size: var(--t-xs); }
+  .widget-proof figcaption small { display: block; margin-top: 16px; color: #696763; font-size: var(--t-xs); }
   .widget-family { display: grid; grid-template-columns: .6fr 1fr; gap: 16px; align-items: center; width: 100%; max-width: 240px; justify-self: center; grid-row: 1; }
   .widget-family:first-of-type { grid-column: 1; }
   .widget-family:last-of-type { grid-column: 3; }
   .widget-piece { margin: 0; }
-  .widget-piece svg { display: block; width: 100%; height: auto; box-shadow: 0 12px 24px rgba(24,20,12,.18); background: var(--bg); overflow: hidden; }
+  .widget-piece svg { display: block; width: 100%; height: auto; box-shadow: 0 12px 24px rgba(20,20,20,.18); background: var(--bg); overflow: hidden; }
   .widget-piece.small { grid-column: 1; grid-row: 1; transform: rotate(-3deg); }
-  .widget-piece.small svg { border-radius: 22%; }
+  .widget-piece.small svg, .widget-piece.small img { border-radius: 22%; }
   .widget-piece.medium { grid-column: 1 / -1; grid-row: 2; transform: rotate(2deg); }
-  .widget-piece.medium svg { border-radius: 10% / 21%; }
+  .widget-piece.medium svg, .widget-piece.medium img { border-radius: 10% / 21%; }
   .widget-piece.large { grid-column: 2; grid-row: 1; transform: rotate(-1deg); }
-  .widget-piece.large svg { border-radius: 10%; }
+  .widget-piece.large svg, .widget-piece.large img { border-radius: 10%; }
+  .widget-piece img { display: block; width: 100%; height: auto; box-shadow: 0 12px 24px rgba(20,20,20,.18); }
   .widget-family:first-of-type { grid-template-columns: 1fr .6fr; }
   .widget-family:first-of-type .small { grid-column: 2; transform: rotate(3deg); }
   .widget-family:first-of-type .large { grid-column: 1; transform: rotate(1deg); }
   .widget-family:first-of-type .medium { transform: rotate(-2deg); }
   @media (max-width: 640px) {
     .limits-section ul.features { grid-template-columns: 1fr; }
-    .limits-section ul.features li:nth-child(2) { border-top: 1px solid rgba(24,20,12,.18); }
+    .limits-section ul.features li:nth-child(2) { border-top: 1px solid rgba(20,20,20,.18); }
     .widget-proof { grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
     .widget-proof figcaption { grid-column: 1 / -1; grid-row: 1; max-width: 32ch; justify-self: center; }
     .widget-family { grid-row: 2; gap: 12px; }
@@ -297,15 +301,15 @@
 
   ul.features { list-style: none; margin-top: 30px; max-width: 60ch; }
   ul.features li {
-    padding: 16px 0; color: rgba(24, 20, 12, 0.78);
-    border-top: 1px solid rgba(24, 20, 12, 0.18);
+    padding: 16px 0; color: #696763;
+    border-top: 1px solid rgba(20, 20, 20, 0.18);
     display: flex; gap: 14px; align-items: baseline;
   }
   ul.features li:first-child { border-top: 0; }
   ul.features li .mark { color: var(--red-on-amber); flex-shrink: 0; }
   ul.features li b { color: var(--ink-on-amber); font-weight: 700; }
 
-  /* ---- privacy: a dark manifesto card that wipes in on the amber ---- */
+  /* ---- privacy: a dark manifesto card that wipes in on the page ---- */
   section.band { padding: clamp(48px, 7vh, 72px) 0; }
   .promise-card {
     background: var(--bg); border-radius: var(--r-card);
@@ -314,10 +318,10 @@
   }
   .promise-card h2 { color: var(--ink); max-width: 26ch; }
   .promise-card .kicker { color: var(--dim); }
-  .promise-card .kicker .path { color: var(--amber); font-weight: 400; }
+  .promise-card .kicker .path { color: #F2F1ED; font-weight: 400; }
   .promise-card .kicker .chev { color: var(--red); }
   .promise-card p.lede { color: var(--dim); max-width: 58ch; }
-  .promise-card p.lede b { color: var(--amber); font-weight: 400; }
+  .promise-card p.lede b { color: #F2F1ED; font-weight: 400; }
   @media (prefers-reduced-motion: no-preference) {
     .promise-card.in-view { animation: wipe 0.85s cubic-bezier(0.16, 1, 0.3, 1) both; }
     @keyframes wipe {
@@ -346,8 +350,8 @@
   details p { margin-top: 12px; padding-left: 24px; color: var(--dim); max-width: 60ch; }
 
   footer {
-    border-top: 1px solid rgba(24, 20, 12, 0.18); padding: 44px 0 60px;
-    color: rgba(24, 20, 12, 0.72); font-size: var(--t-sm);
+    border-top: 1px solid rgba(20, 20, 20, 0.18); padding: 44px 0 60px;
+    color: #696763; font-size: var(--t-sm);
   }
   footer .prompt { margin-bottom: 10px; color: var(--ink-on-amber); font-weight: 700; }
   footer .prompt .chev { color: var(--red-on-amber); }
@@ -356,6 +360,7 @@
     color: var(--ink-on-amber); margin-right: 18px;
     text-underline-offset: 3px; text-decoration-thickness: 1px;
   }
+  footer .compliance { margin-top: 14px; font-size: var(--t-2xs); max-width: 60ch; }
 
   /* ---- reveals: visible by default, entrance on observe only ---- */
   @media (prefers-reduced-motion: no-preference) {
@@ -393,12 +398,13 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- Exact TerminalTokenGeometry + TerminalTokenGlyph, ported from the app -->
+    <!-- Exact Squircle face (superellipse n=4) + TerminalTokenGlyph "[~]", ported from the app (WULF 2026-09-29 row C) -->
     <g id="tokmark-dark">
-      <path fill="#18140C" d="M 41.00 5.20 A 18 18 0 0 1 59.00 5.20 L 84.30 19.80 A 18 18 0 0 1 93.30 35.39 L 93.30 64.61 A 18 18 0 0 1 84.30 80.20 L 59.00 94.80 A 18 18 0 0 1 41.00 94.80 L 15.70 80.20 A 18 18 0 0 1 6.70 64.61 L 6.70 35.39 A 18 18 0 0 1 15.70 19.80 Z"/>
-      <g stroke="#E0B25E" stroke-width="7" stroke-linecap="round" fill="none">
-        <path d="M 28.84 52.40 C 35.28 39.80, 44.48 60.20, 52.30 47.60"/>
-        <path d="M 67.48 38.00 L 57.36 62.00"/>
+      <path fill="#141414" d="M 100.00 50.00 L 99.95 62.79 L 99.79 68.06 L 99.52 72.08 L 99.14 75.44 L 98.66 78.35 L 98.06 80.93 L 97.35 83.25 L 96.53 85.36 L 95.59 87.27 L 94.54 89.01 L 93.35 90.60 L 92.04 92.04 L 90.60 93.35 L 89.01 94.54 L 87.27 95.59 L 85.36 96.53 L 83.25 97.35 L 80.93 98.06 L 78.35 98.66 L 75.44 99.14 L 72.08 99.52 L 68.06 99.79 L 62.79 99.95 L 50.00 100.00 L 37.21 99.95 L 31.94 99.79 L 27.92 99.52 L 24.56 99.14 L 21.65 98.66 L 19.07 98.06 L 16.75 97.35 L 14.64 96.53 L 12.73 95.59 L 10.99 94.54 L 9.40 93.35 L 7.96 92.04 L 6.65 90.60 L 5.46 89.01 L 4.41 87.27 L 3.47 85.36 L 2.65 83.25 L 1.94 80.93 L 1.34 78.35 L 0.86 75.44 L 0.48 72.08 L 0.21 68.06 L 0.05 62.79 L 0.00 50.00 L 0.05 37.21 L 0.21 31.94 L 0.48 27.92 L 0.86 24.56 L 1.34 21.65 L 1.94 19.07 L 2.65 16.75 L 3.47 14.64 L 4.41 12.73 L 5.46 10.99 L 6.65 9.40 L 7.96 7.96 L 9.40 6.65 L 10.99 5.46 L 12.73 4.41 L 14.64 3.47 L 16.75 2.65 L 19.07 1.94 L 21.65 1.34 L 24.56 0.86 L 27.92 0.48 L 31.94 0.21 L 37.21 0.05 L 50.00 0.00 L 62.79 0.05 L 68.06 0.21 L 72.08 0.48 L 75.44 0.86 L 78.35 1.34 L 80.93 1.94 L 83.25 2.65 L 85.36 3.47 L 87.27 4.41 L 89.01 5.46 L 90.60 6.65 L 92.04 7.96 L 93.35 9.40 L 94.54 10.99 L 95.59 12.73 L 96.53 14.64 L 97.35 16.75 L 98.06 19.07 L 98.66 21.65 L 99.14 24.56 L 99.52 27.92 L 99.79 31.94 L 99.95 37.21 Z"/>
+      <g stroke="#F2F1ED" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M 30 22 L 18 22 L 18 78 L 30 78"/>
+        <path d="M 70 22 L 82 22 L 82 78 L 70 78"/>
+        <path d="M 38 52 Q 44 42 50 52 Q 56 62 62 52"/>
       </g>
     </g>
   </defs>
@@ -431,8 +437,8 @@
     </div>
     <div class="hero-shot">
       <div class="phone">
-        <img src="assets/shot-dashboard.png?v=20260914-arches-bars" width="1320" height="2868"
-             alt="Token Range dashboard with sample Claude Fable, weekly and session limits, Codex limits, and Cursor limits in thin open rings"
+        <img src="assets/bento-shot-dashboard.png?v=20261003" width="1320" height="2868"
+             alt="Token Range dashboard with a black Claude tile and white Codex, Cursor, Grok, and Antigravity tiles, each with grid-cell meters, sample data"
              fetchpriority="high">
       </div>
     </div>
@@ -459,14 +465,11 @@
           <small>Widgets shown with sample data.</small>
         </figcaption>
           <div class="widget-family">
-            <div class="widget-piece small"><svg viewBox="696 1586 528 530" role="img" aria-label="Small Arches widget showing five providers with sample data"><image href="assets/widget-bars-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece medium"><svg viewBox="96 1586 1128 530" role="img" aria-label="Medium Arches widget showing five providers with sample data"><image href="assets/widget-medium-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece large"><svg viewBox="96 282 1128 1182" role="img" aria-label="Large Arches widget showing five providers with sample data"><image href="assets/widget-arches-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
+            <div class="widget-piece small"><img src="assets/bento-widget-small.png?v=20260929-bento" width="489" height="479" alt="Single Limit widget showing Claude's 5-hour window with sample data"></div>
+            <div class="widget-piece medium"><img src="assets/bento-widget-medium.png?v=20260929-bento" width="488" height="479" alt="Medium Arches widget showing four providers as ring gauges with sample data"></div>
           </div>
           <div class="widget-family">
-            <div class="widget-piece small"><svg viewBox="96 1586 528 530" role="img" aria-label="Small Bars widget showing five providers with sample data"><image href="assets/widget-bars-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece medium"><svg viewBox="96 934 1128 530" role="img" aria-label="Medium Bars widget showing five providers with sample data"><image href="assets/widget-medium-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
-            <div class="widget-piece large"><svg viewBox="96 282 1128 1182" role="img" aria-label="Large Bars widget showing five providers with sample data"><image href="assets/widget-bars-native.png?v=20260914-six" width="1320" height="2868"/></svg></div>
+            <div class="widget-piece large"><img src="assets/bento-widget-large.png?v=20260929-bento" width="1059" height="484" alt="Large Cells widget showing four providers as a grid-cell list with sample data"></div>
           </div>
       </figure>
 
@@ -482,8 +485,8 @@
         </div>
         <div class="shot">
           <div class="phone">
-            <img src="assets/shot-themes.png?v=20260914-arches-bars" width="1320" height="2868"
-                 alt="Token Range theme picker showing light and dark palettes with open arch previews">
+            <img src="assets/bento-shot-themes.png?v=20261003" width="1320" height="2868"
+                 alt="Token Range theme sheet showing light, house, LLM, and terminal skins grouped with PRO locks, canvas in use">
           </div>
         </div>
       </div>
@@ -553,6 +556,7 @@
     <p>Token Range: AI usage limits for coding tools. Built for people who
     read their terminal more than their phone.</p>
     <p class="legal"><a href="/privacy/">Privacy Policy</a> <a href="/terms/">Terms of Use</a> <a href="/support/">Support</a></p>
+    <p class="compliance">Token Range is an independent app and is not affiliated with, endorsed by, or sponsored by Anthropic, OpenAI, Anysphere, xAI, Google, OpenRouter, Moonshot AI, or Z.ai. Provider names identify compatible services only.</p>
   </div>
 </footer>
 
