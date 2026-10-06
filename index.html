@@ -274,29 +274,22 @@
   .widget-proof figcaption { grid-column: 2; grid-row: 1; color: var(--ink-on-amber); text-align: center; font-size: var(--t-md); }
   .widget-proof figcaption h3 { font-size: clamp(1.4rem,2.4vw,1.8rem); line-height: 1.12; letter-spacing: -.03em; margin-bottom: 16px; text-wrap: balance; }
   .widget-proof figcaption small { display: block; margin-top: 16px; color: #696763; font-size: var(--t-xs); }
-  .widget-family { display: grid; grid-template-columns: .6fr 1fr; gap: 16px; align-items: center; width: 100%; max-width: 240px; justify-self: center; grid-row: 1; }
+  .widget-family { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: center; width: 100%; max-width: 320px; justify-self: center; grid-row: 1; }
   .widget-family:first-of-type { grid-column: 1; }
-  .widget-family:last-of-type { grid-column: 3; }
+  .widget-family:last-of-type { grid-column: 3; grid-template-columns: minmax(0, 1fr); }
   .widget-piece { margin: 0; }
-  .widget-piece svg { display: block; width: 100%; height: auto; box-shadow: 0 12px 24px rgba(20,20,20,.18); background: var(--bg); overflow: hidden; }
-  .widget-piece.small { grid-column: 1; grid-row: 1; transform: rotate(-3deg); }
-  .widget-piece.small svg, .widget-piece.small img { border-radius: 22%; }
-  .widget-piece.medium { grid-column: 1 / -1; grid-row: 2; transform: rotate(2deg); }
-  .widget-piece.medium svg, .widget-piece.medium img { border-radius: 10% / 21%; }
-  .widget-piece.large { grid-column: 2; grid-row: 1; transform: rotate(-1deg); }
-  .widget-piece.large svg, .widget-piece.large img { border-radius: 10%; }
-  .widget-piece img { display: block; width: 100%; height: auto; box-shadow: 0 12px 24px rgba(20,20,20,.18); }
-  .widget-family:first-of-type { grid-template-columns: 1fr .6fr; }
-  .widget-family:first-of-type .small { grid-column: 2; transform: rotate(3deg); }
-  .widget-family:first-of-type .large { grid-column: 1; transform: rotate(1deg); }
-  .widget-family:first-of-type .medium { transform: rotate(-2deg); }
+  /* Real widget captures with transparent rounded corners: the shadow
+     follows the image's own shape instead of a CSS box. */
+  .widget-piece img { display: block; width: 100%; height: auto; filter: drop-shadow(0 10px 12px rgba(20,20,20,.16)); }
+  .widget-piece.small:first-child { transform: rotate(-3deg); }
+  .widget-piece.small:last-child { transform: rotate(2deg); }
+  .widget-piece.wide { transform: rotate(-1deg); }
   @media (max-width: 640px) {
     .limits-section ul.features { grid-template-columns: 1fr; }
     .limits-section ul.features li:nth-child(2) { border-top: 1px solid rgba(20,20,20,.18); }
-    .widget-proof { grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
-    .widget-proof figcaption { grid-column: 1 / -1; grid-row: 1; max-width: 32ch; justify-self: center; }
-    .widget-family { grid-row: 2; gap: 12px; }
-    .widget-family:last-of-type { grid-column: 2; }
+    .widget-proof { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 32px; }
+    .widget-proof figcaption { grid-column: 1; grid-row: 1; max-width: 32ch; justify-self: center; }
+    .widget-family, .widget-family:first-of-type, .widget-family:last-of-type { grid-column: 1; grid-row: auto; gap: 12px; max-width: 340px; }
   }
 
   ul.features { list-style: none; margin-top: 30px; max-width: 60ch; }
@@ -465,11 +458,11 @@
           <small>Widgets shown with sample data.</small>
         </figcaption>
           <div class="widget-family">
-            <div class="widget-piece small"><img src="assets/bento-widget-small.png?v=20260929-bento" width="489" height="479" alt="Single Limit widget showing Claude's 5-hour window with sample data"></div>
-            <div class="widget-piece medium"><img src="assets/bento-widget-medium.png?v=20260929-bento" width="488" height="479" alt="Medium Arches widget showing four providers as ring gauges with sample data"></div>
+            <div class="widget-piece small"><img src="assets/widget-single.png?v=20261005" width="528" height="529" alt="Small Single Limit widget showing Claude's Fable allowance and its reset time, with sample data"></div>
+            <div class="widget-piece small"><img src="assets/widget-arches.png?v=20261005" width="528" height="528" alt="Small Arches widget showing five providers as ring gauges, with sample data"></div>
           </div>
           <div class="widget-family">
-            <div class="widget-piece large"><img src="assets/bento-widget-large.png?v=20260929-bento" width="1059" height="484" alt="Large Cells widget showing four providers as a grid-cell list with sample data"></div>
+            <div class="widget-piece wide"><img src="assets/widget-bars.png?v=20261005" width="1132" height="528" alt="Medium Bars widget showing five providers as cell meters, with sample data"></div>
           </div>
       </figure>
 
